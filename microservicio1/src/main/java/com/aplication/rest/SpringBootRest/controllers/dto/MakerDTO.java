@@ -1,6 +1,5 @@
 package com.aplication.rest.SpringBootRest.controllers.dto;
 
-import com.aplication.rest.SpringBootRest.entities.Product;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,6 +23,6 @@ public class MakerDTO {
     private Long id;
     @NotNull(message = "El campo 'nombre' es obligatorio")
     private String name;
-    private List<Product> productList=new ArrayList<>();
+
 
 }

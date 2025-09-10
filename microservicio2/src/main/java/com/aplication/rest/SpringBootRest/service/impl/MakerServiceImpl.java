@@ -1,26 +1,24 @@
 package com.aplication.rest.SpringBootRest.service.impl;
 
+import com.aplication.rest.SpringBootRest.PersonListClient;
 import com.aplication.rest.SpringBootRest.controllers.dto.MakerDTO;
 import com.aplication.rest.SpringBootRest.entities.Maker;
 import com.aplication.rest.SpringBootRest.mappers.MakerMapper;
 import com.aplication.rest.SpringBootRest.persistence.IMakerDAO;
 import com.aplication.rest.SpringBootRest.service.IMakerService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class MakerServiceImpl implements IMakerService {
 
     @Autowired
     private final MakerMapper makerMapper;
-
-    public MakerServiceImpl(MakerMapper makerMapper) {
-        this.makerMapper = makerMapper;
-    }
 
     @Autowired
     private IMakerDAO makerDAO;
@@ -51,10 +49,10 @@ public class MakerServiceImpl implements IMakerService {
     }
 
     @Override
-    public MakerDTO getById(Long id) throws Exception {
+    public MakerDTO getById(Long id){
         return makerDAO.findById(id)
                 .map(makerMapper::toMakerDto)
-                .orElseThrow(()->new IllegalArgumentException("El valor no se encuentra en la tabla"))        ;
+                .orElse(null);
     }
 
     @Override
@@ -63,5 +61,7 @@ public class MakerServiceImpl implements IMakerService {
         Maker saved = makerDAO.save(entity);
         return makerMapper.toMakerDto(saved);
     }
+
+
 
 }

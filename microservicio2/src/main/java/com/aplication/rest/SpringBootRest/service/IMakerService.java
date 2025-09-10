@@ -14,16 +14,11 @@ public interface IMakerService {
 
 
     List<Maker> findAll ();
-
     Optional<Maker> findById (Long id);
-
     void save(Maker maker);
-
     void deleteById(Long id);
-
     List<MakerDTO> getAll();
-
-    MakerDTO getById(Long id) throws Exception;
-
+    MakerDTO getById(Long id);
     MakerDTO saveMaker (MakerDTO makerDTO);
+
 }
