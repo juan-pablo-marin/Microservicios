@@ -1,4 +1,4 @@
-package com.aplication.rest.SpringBootRest;
+package com.aplication.rest.SpringBootRest.feign;
 
 import com.aplication.rest.SpringBootRest.controllers.dto.MakerDTO;
 import org.springframework.cloud.openfeign.FeignClient;

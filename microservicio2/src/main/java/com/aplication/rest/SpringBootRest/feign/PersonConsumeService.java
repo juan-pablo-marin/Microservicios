@@ -1,6 +1,5 @@
-package com.aplication.rest.SpringBootRest.service.impl;
+package com.aplication.rest.SpringBootRest.feign;
 
-import com.aplication.rest.SpringBootRest.PersonListClient;
 import com.aplication.rest.SpringBootRest.controllers.dto.MakerDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
