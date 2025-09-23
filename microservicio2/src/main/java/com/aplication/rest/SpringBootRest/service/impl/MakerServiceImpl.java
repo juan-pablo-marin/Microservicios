@@ -1,6 +1,5 @@
 package com.aplication.rest.SpringBootRest.service.impl;
 
-import com.aplication.rest.SpringBootRest.PersonListClient;
 import com.aplication.rest.SpringBootRest.controllers.dto.MakerDTO;
 import com.aplication.rest.SpringBootRest.entities.Maker;
 import com.aplication.rest.SpringBootRest.mappers.MakerMapper;
@@ -34,8 +33,10 @@ public class MakerServiceImpl implements IMakerService {
     }
 
     @Override
-    public void save(Maker maker) {
-        makerDAO.save(maker);
+    public MakerDTO save(MakerDTO makerDTO) {
+        Maker entity = makerMapper.toMaker(makerDTO);
+        Maker saved = makerDAO.save(entity);
+        return makerMapper.toMakerDto(saved);
     }
 
     @Override

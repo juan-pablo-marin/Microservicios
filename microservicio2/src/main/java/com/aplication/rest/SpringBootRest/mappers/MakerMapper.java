@@ -15,7 +15,7 @@ public interface MakerMapper {
 
    // @Mapping(target = "names", source = "name")
     MakerDTO toMakerDto(Maker maker);
-
     Maker toMaker(MakerDTO dto);
     List<MakerDTO> toDtos(List<Maker> makers);
+
 }

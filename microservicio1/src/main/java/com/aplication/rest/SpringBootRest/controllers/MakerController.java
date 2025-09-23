@@ -16,6 +16,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("api/maker")
 public class MakerController {
+
     @Autowired
     private IMakerService makerService;
 
@@ -27,10 +28,10 @@ public class MakerController {
 
     @GetMapping("/get/{id}")
     public ResponseEntity<MakerDTO> getById(@PathVariable Long id ) throws Exception {
-//        if (makerService.findById(id).isPresent()) {
+        if (makerService.findById(id).isPresent()) {
             MakerDTO makerDTO = makerService.getById(id);
             return ResponseEntity.ok(makerDTO);
-//        }
-//        return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.badRequest().build();
     }
 }

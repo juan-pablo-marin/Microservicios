@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcc-security-service
+  namespace: stech
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mcc-security-service
+  template:
+    metadata:
+      labels:
+        app: mcc-security-service
+    spec:
+      containers:
+        - name: mcc-security-service
+          image: stivetech/mcc-security:1.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SERVER_PORT
+              value: "8080"
+            - name: URL_SECURITY_SERVICE
+              value: http://mcc-security-service:8080

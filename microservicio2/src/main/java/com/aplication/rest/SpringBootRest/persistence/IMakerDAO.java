@@ -13,11 +13,8 @@ public interface IMakerDAO {
      **/
 
     List<Maker> findAll ();
-
     Optional<Maker> findById (Long id);
-
     Maker save(Maker maker);
-
     void deleteById(Long id);
 
 }

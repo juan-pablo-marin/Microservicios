@@ -1,9 +1,8 @@
 package com.aplication.rest.SpringBootRest.controllers;
 
 import com.aplication.rest.SpringBootRest.controllers.dto.MakerDTO;
-import com.aplication.rest.SpringBootRest.entities.Maker;
+
 import com.aplication.rest.SpringBootRest.service.IMakerService;
-import com.aplication.rest.SpringBootRest.service.impl.PersonConsumeService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +19,11 @@ import java.util.Optional;
 @AllArgsConstructor
 public class MakerController {
 
-    private final PersonConsumeService service;
-
     @Autowired
     private IMakerService makerService;
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete ( @PathVariable Long id){
-
         if(id==null){
         return ResponseEntity.badRequest().build();
         }
@@ -35,7 +31,7 @@ public class MakerController {
         return ResponseEntity.ok("Regsitro Eliminado");
     }
 
-    @GetMapping("/getAlll")
+    @GetMapping("/getAll")
     public ResponseEntity <?> getAll (){
        List<MakerDTO> list =  makerService.getAll();
        return ResponseEntity.ok(list);
@@ -49,24 +45,13 @@ public class MakerController {
 
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateMaker (@Valid @PathVariable Long id, @RequestBody MakerDTO makerDTO){
-        Optional<Maker> makerOptional = makerService.findById(id);
-
-        if(makerOptional.isPresent()){
             MakerDTO update =makerService.saveMaker(makerDTO);
             return ResponseEntity.status(HttpStatus.ACCEPTED).body(update);
-        }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("error");
     }
 
     @PostMapping ("/save")
     public ResponseEntity<?> save (@Valid @RequestBody MakerDTO makerDTO) throws URISyntaxException {
         MakerDTO create=makerService.saveMaker(makerDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(create);//.created(new URI("api/maker/save")).build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(create);
     }
-
-    @GetMapping("/persons")
-    public List<MakerDTO> getPersons() {
-        return service.fetchAllPersons();
-    }
-
 }
