@@ -1,17 +1,12 @@
 package com.aplication.rest.SpringBootRest.controllers;
 
 import com.aplication.rest.SpringBootRest.controllers.dto.MakerDTO;
-import com.aplication.rest.SpringBootRest.entities.Maker;
 import com.aplication.rest.SpringBootRest.service.IMakerService;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URISyntaxException;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("api/maker")

@@ -19,13 +19,24 @@ public class GatewayConfig {
     @Bean
     public RouteLocator microserviceRouteLocator (RouteLocatorBuilder builder){
         return builder.routes()
-            .route("microservice",
-                    r->r.path("/api/maker/**")
-                            .uri(microservicio1))
-
-            .route("microservice2",
-                    r->r.path("/micro/**")
-                            .uri(microservicio2))
+                .route("microservice",
+                        r->r.path("/api/maker/**")
+                                .uri(microservicio1))
+                .route("microservice2",
+                        r->r.path("/micro/**")
+                                .uri(microservicio2))
+                .route("swagger-microservice",
+                        r->r.path("/v3/api-docs/api/maker")
+                                .filters(f-> f
+                                        .rewritePath("/v3/api-docs/api/maker","/v3/api-docs")
+                                )
+                                .uri(microservicio1))
+                .route("swagger-microservice2",
+                        r->r.path("/v3/api-docs/micro")
+                                .filters(f-> f
+                                        .rewritePath("/v3/api-docs/micro","/v3/api-docs")
+                                )
+                                .uri(microservicio2))
                 .build();
 }
 

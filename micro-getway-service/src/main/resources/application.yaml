@@ -13,3 +13,20 @@ server:
 microservices:
   microservice1-url: ${MICROSERVICE1_URL:http://localhost:8080}
   microservice2-url: ${MICROSERVICE1_URL:http://localhost:8083}
+springdoc:
+  api-docs:
+    enable: true
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enable: true
+    config-url: /v3/api-docs/swagger-config
+    urls:
+      - name: Maker Service
+        url: /v3/api-docs/api/maker
+      - name: Microservice 2
+        url: /v3/api-docs/micro
+    disable-swagger-default-url: true
+    operation-sorter: alpha
+    tags-sorter: alpha
+    display-request-duration: true
