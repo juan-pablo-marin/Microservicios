@@ -7,12 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MakerApiMapper {
-//    public static ApiResponse<MakerDTO> toEntity (ApiResponse<MakerDTO> dto) {
-//          Maker maker = new Maker();
-//          maker.setName(dto.getData().getName());
-//          return ApiResponse<> maker;
-//        }
-
     public Maker toEtnity (ApiResponse<MakerDTO> dto) {
         Maker maker = new Maker();
         maker.setName(dto.getData().getName());
