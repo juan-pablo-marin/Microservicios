@@ -1,11 +1,11 @@
-package com.micro.security_service.config;
+package com.microservicios.micro_security_service.config;
 
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
-import com.micro.security_service.util.MicroservicesProperties;
+import com.microservicios.micro_security_service.util.MicroservicesProperties;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
@@ -42,7 +42,6 @@ import java.util.UUID;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class AuthorizationServerConfig {
-
 
     final MicroservicesProperties microservicesProperties;
 
