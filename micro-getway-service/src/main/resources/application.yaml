@@ -30,3 +30,30 @@ springdoc:
     operation-sorter: alpha
     tags-sorter: alpha
     display-request-duration: true
+management:
+  health:
+    circuitbreakers:
+      enable: true
+  endpoints:
+    web:
+      exposure:
+        include: health, metrics, circuitbreakers, info
+  endpoint:
+    health:
+      show-detail: always
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        sliding-window-size: 5 #numero de llamadas que monitorea antes de cambiar de estado
+        minimum-number-of-calls: 3 #minimo de llamadas para evaluar el estado
+        failure-rate-threshold: 50 #si el 50% de las ultimas 5 llamadas fallan, el circuito se abre
+        wait-duration-in-open-state: 10s #tiempo de espera antes de probar si el servicio volvio
+        permitted-number-of-calls-in-half-open-state: 2 #intentos en HALF_open antes de cerrar
+  timelimiter:
+    instances:
+      makerServiceCircuitBreaker:
+        timeout-duration: 5s #Cualquier request que tarde mas de 2s se considera fallo
+gateway:
+  retry:
+    attempts: 3
